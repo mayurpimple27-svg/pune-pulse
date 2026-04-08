@@ -1,0 +1,95 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    @apply transition-colors duration-300;
+  }
+  body {
+    @apply min-h-screen bg-gray-50 dark:bg-gray-950 text-gray-900 dark:text-gray-100 transition-colors duration-300;
+  }
+  * {
+    @apply border-gray-200 dark:border-gray-800;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-pulse-600 text-white px-4 py-2 rounded-lg font-medium
+           hover:bg-pulse-700 active:scale-95 transition-all duration-150
+           disabled:opacity-50 disabled:cursor-not-allowed shadow-sm;
+  }
+  .btn-secondary {
+    @apply bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-200
+           px-4 py-2 rounded-lg font-medium hover:bg-gray-200 dark:hover:bg-gray-700
+           transition-colors active:scale-95;
+  }
+  .card {
+    @apply bg-white dark:bg-gray-900 rounded-xl shadow-sm border
+           border-gray-100 dark:border-gray-800 p-5 transition-colors duration-200;
+  }
+  .input-field {
+    @apply w-full px-4 py-2.5 border border-gray-300 dark:border-gray-700
+           rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100
+           placeholder-gray-400 dark:placeholder-gray-500
+           focus:ring-2 focus:ring-pulse-500 focus:border-transparent
+           outline-none transition-all duration-200;
+  }
+  .badge {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
+  }
+  .glass {
+    @apply bg-white/80 dark:bg-gray-900/80 backdrop-blur-md;
+  }
+
+  /* Scrollbar */
+  .scrollbar-thin::-webkit-scrollbar {
+    width: 5px;
+  }
+  .scrollbar-thin::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    @apply bg-gray-300 dark:bg-gray-700 rounded-full;
+  }
+}
+
+/* ── Maharashtra animated background ─────────────────────────────────── */
+@keyframes mhBgShift {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.mh-animated-bg {
+  /* light: soft cream, peach, lavender, sky — warm Maharashtra palette */
+  background: linear-gradient(
+    -45deg,
+    #f0f4ff,
+    #fff8f0,
+    #fef2e8,
+    #f5f0ff,
+    #f0f8ff
+  );
+  background-size: 400% 400%;
+  animation: mhBgShift 22s ease infinite;
+}
+
+.dark .mh-animated-bg {
+  /* dark: deep navy, dark saffron earth, midnight blue, dark maroon */
+  background: linear-gradient(
+    -45deg,
+    #07081a,
+    #1a0800,
+    #091420,
+    #140500,
+    #060914
+  );
+  background-size: 400% 400%;
+  animation: mhBgShift 22s ease infinite;
+}

@@ -1,0 +1,46 @@
+server:
+  port: ${SERVER_PORT:8090}
+  servlet:
+    context-path: /api
+
+spring:
+  application:
+    name: pune-pulse-backend
+  datasource:
+    url: ${DB_URL:jdbc:postgresql://localhost:5432/punepulse}
+    username: ${DB_USERNAME:postgres}
+    password: ${DB_PASSWORD:postgres}
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: ${JPA_DDL_AUTO:update}
+    show-sql: ${JPA_SHOW_SQL:false}
+    properties:
+      hibernate:
+        format_sql: true
+        jdbc:
+          time_zone: UTC
+  sql:
+    init:
+      mode: never
+
+app:
+  jwt:
+    secret: ${JWT_SECRET:replace-this-with-a-long-jwt-secret-at-least-32-characters}
+    expiration-ms: ${JWT_EXPIRATION_MS:86400000}
+    cookie-name: ${JWT_COOKIE_NAME:pp_token}
+  cors:
+    allowed-origins: ${FRONTEND_URL:http://localhost:5173}
+  rate-limit:
+    requests-per-minute: ${RATE_LIMIT_REQUESTS_PER_MINUTE:60}
+  scraper:
+    base-url: ${SCRAPER_URL:http://localhost:8000}
+  gemini:
+    api-key: ${GEMINI_API_KEY:}
+    model: ${GEMINI_MODEL:gemini-1.5-flash}
+    cache-ttl-minutes: ${GEMINI_CACHE_TTL_MINUTES:5}
+
+logging:
+  level:
+    com.punepulse: ${APP_LOG_LEVEL:INFO}
+    org.springframework.security: ${SECURITY_LOG_LEVEL:INFO}
